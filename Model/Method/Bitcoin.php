@@ -203,7 +203,7 @@ class Bitcoin extends AbstractMethod
         self::$_redirectUrl = ($this->_scopeConfig->getValue('payment/bitpay/fullscreen')) ? $bitpayInvoice->getUrl(): $bitpayInvoice->getUrl().'&view=iframe';
 
         
-        $this->getHelper()->debugData('[INFO] BitPay Invoice created. Invoice URL: '.$bitpayInvoice->getUrl());
+        $this->getHelper()->debugData('[INFO] GloBee Invoice created. Invoice URL: '.$bitpayInvoice->getUrl());
 
         
         $order = $payment->getOrder();
@@ -266,7 +266,7 @@ class Bitcoin extends AbstractMethod
              * Merchant must goto their account and create a pairing code to
              * enter in.
              */
-            $this->getHelper()->debugData('[ERROR] In \Bitpay\Core\Model\Method\Bitcoin::canUseCheckout(): There was an error retrieving the token store param from the database or this Magento store does not have a BitPay token.');
+            $this->getHelper()->debugData('[ERROR] In \Bitpay\Core\Model\Method\Bitcoin::canUseCheckout(): There was an error retrieving the token store param from the database or this Magento store does not have a GloBee token.');
 
             return false;
         }
@@ -296,19 +296,19 @@ class Bitcoin extends AbstractMethod
         $client  = $this->getHelper()->getBitpayClient();
 
         if (false === isset($client) || true === empty($client)) {
-            $this->getHelper()->debugData('[ERROR] In \Bitpay\Core\Model\Method\Bitcoin::fetchInvoice(): could not obtain BitPay client.');
-            throw new \Exception('In \Bitpay\Core\Model\Method\Bitcoin::fetchInvoice(): could not obtain BitPay client.');
+            $this->getHelper()->debugData('[ERROR] In \Bitpay\Core\Model\Method\Bitcoin::fetchInvoice(): could not obtain GloBee client.');
+            throw new \Exception('In \Bitpay\Core\Model\Method\Bitcoin::fetchInvoice(): could not obtain GloBee client.');
         } else {
-            $this->getHelper()->debugData('[INFO] In \Bitpay\Core\Model\Method\Bitcoin::fetchInvoice(): obtained BitPay client successfully.');
+            $this->getHelper()->debugData('[INFO] In \Bitpay\Core\Model\Method\Bitcoin::fetchInvoice(): obtained GloBee client successfully.');
         }
 
         $invoice = $client->getInvoice($id);
 
         if (false === isset($invoice) || true === empty($invoice)) {
-            $this->getHelper()->debugData('[ERROR] In \Bitpay\Core\Model\Method\Bitcoin::fetchInvoice(): could not retrieve invoice from BitPay.');
-            throw new \Exception('In \Bitpay\Core\Model\Method\Bitcoin::fetchInvoice(): could not retrieve invoice from BitPay.');
+            $this->getHelper()->debugData('[ERROR] In \Bitpay\Core\Model\Method\Bitcoin::fetchInvoice(): could not retrieve invoice from GloBee.');
+            throw new \Exception('In \Bitpay\Core\Model\Method\Bitcoin::fetchInvoice(): could not retrieve invoice from GloBee.');
         } else {
-            $this->getHelper()->debugData('[INFO] In \Bitpay\Core\Model\Method\Bitcoin::fetchInvoice(): successfully retrieved invoice id ' . $id . ' from BitPay.');
+            $this->getHelper()->debugData('[INFO] In \Bitpay\Core\Model\Method\Bitcoin::fetchInvoice(): successfully retrieved invoice id ' . $id . ' from GloBee.');
         }
 
         return $invoice;
@@ -386,10 +386,10 @@ class Bitcoin extends AbstractMethod
         $invoice = new \Bitpay\Invoice();
 
         if (false === isset($invoice) || true === empty($invoice)) {
-            $this->getHelper()->debugData('[ERROR] In \Bitpay\Core\Model\Method\Bitcoin::initializeInvoice(): could not construct new BitPay invoice object.');
-            throw new \Exception('In \Bitpay\Core\Model\Method\Bitcoin::initializeInvoice(): could not construct new BitPay invoice object.');
+            $this->getHelper()->debugData('[ERROR] In \Bitpay\Core\Model\Method\Bitcoin::initializeInvoice(): could not construct new GloBee invoice object.');
+            throw new \Exception('In \Bitpay\Core\Model\Method\Bitcoin::initializeInvoice(): could not construct new GloBee invoice object.');
         } else {
-            $this->getHelper()->debugData('[INFO] In \Bitpay\Core\Model\Method\Bitcoin::initializeInvoice(): constructed new BitPay invoice object successfully.');
+            $this->getHelper()->debugData('[INFO] In \Bitpay\Core\Model\Method\Bitcoin::initializeInvoice(): constructed new GloBee invoice object successfully.');
         }
         
         $invoice->setFullNotifications(true);
@@ -453,8 +453,8 @@ class Bitcoin extends AbstractMethod
         $buyer = new \Bitpay\Buyer();
 
         if (false === isset($buyer) || true === empty($buyer)) {
-            $this->getHelper()->debugData('[ERROR] In \Bitpay\Core\Model\Method\Bitcoin::addBuyerInfo(): could not construct new BitPay buyer object.');
-            throw new \Exception('In \Bitpay\Core\Model\Method\Bitcoin::addBuyerInfo(): could not construct new BitPay buyer object.');
+            $this->getHelper()->debugData('[ERROR] In \Bitpay\Core\Model\Method\Bitcoin::addBuyerInfo(): could not construct new GloBee buyer object.');
+            throw new \Exception('In \Bitpay\Core\Model\Method\Bitcoin::addBuyerInfo(): could not construct new GloBee buyer object.');
         }
 
 
@@ -538,8 +538,8 @@ class Bitcoin extends AbstractMethod
         $currency = new \Bitpay\Currency();
 
         if (false === isset($currency) || true === empty($currency)) {
-            $this->getHelper()->debugData('[ERROR] In \Bitpay\Core\Model\Method\Bitcoin::addCurrencyInfo(): could not construct new BitPay currency object.');
-            throw new \Exception('In \Bitpay\Core\Model\Method\Bitcoin::addCurrencyInfo(): could not construct new BitPay currency object.');
+            $this->getHelper()->debugData('[ERROR] In \Bitpay\Core\Model\Method\Bitcoin::addCurrencyInfo(): could not construct new GloBee currency object.');
+            throw new \Exception('In \Bitpay\Core\Model\Method\Bitcoin::addCurrencyInfo(): could not construct new GloBee currency object.');
         }
 
         $currency->setCode($order->getOrderCurrencyCode());
@@ -567,8 +567,8 @@ class Bitcoin extends AbstractMethod
         $item = new \Bitpay\Item();
 
         if (false === isset($item) || true === empty($item)) {
-            $this->getHelper()->debugData('[ERROR] In \Bitpay\Core\Model\Method\Bitcoin::addPriceInfo(): could not construct new BitPay item object.');
-            throw new \Exception('In \Bitpay\Core\Model\Method\Bitcoin::addPriceInfo(): could not construct new BitPay item object.');
+            $this->getHelper()->debugData('[ERROR] In \Bitpay\Core\Model\Method\Bitcoin::addPriceInfo(): could not construct new GloBee item object.');
+            throw new \Exception('In \Bitpay\Core\Model\Method\Bitcoin::addPriceInfo(): could not construct new GloBee item object.');
         }
 
         $item->setPrice($amount);

@@ -43,25 +43,25 @@ class Index extends \Magento\Framework\App\Action\Action {
 		$raw_post_data = file_get_contents('php://input');
 
 		if (false === $raw_post_data) {
-			$this -> _bitpayHelper -> debugData('[ERROR] In \Bitpay\Core\Controller\Ipn::indexAction(), Could not read from the php://input stream or invalid Bitpay IPN received.');
+			$this -> _bitpayHelper -> debugData('[ERROR] In \Bitpay\Core\Controller\Ipn::indexAction(), Could not read from the php://input stream or invalid GloBee IPN received.');
 			throw new \Exception('Could not read from the php://input stream or invalid Bitpay IPN received.');
 		}
 
 		$this -> _bitpayHelper -> registerAutoloader();
 
-		$this -> _bitpayHelper -> debugData(sprintf('[INFO] In \Bitpay\Core\Controller\Ipn::indexAction(), Incoming IPN message from BitPay: ') . ' ' . json_encode($raw_post_data));
+		$this -> _bitpayHelper -> debugData(sprintf('[INFO] In \Bitpay\Core\Controller\Ipn::indexAction(), Incoming IPN message from GloBee: ') . ' ' . json_encode($raw_post_data));
 
 		// Magento doesn't seem to have a way to get the Request body
 		$ipn = json_decode($raw_post_data);
 
 		if (true === empty($ipn)) {
-			$this -> _bitpayHelper -> debugData('[ERROR] In \Bitpay\Core\Controller\Ipn::indexAction(), Could not decode the JSON payload from BitPay.');
-			throw new \Exception('Could not decode the JSON payload from BitPay.');
+			$this -> _bitpayHelper -> debugData('[ERROR] In \Bitpay\Core\Controller\Ipn::indexAction(), Could not decode the JSON payload from GloBee.');
+			throw new \Exception('Could not decode the JSON payload from GloBee.');
 		}
 
 		if (true === empty($ipn -> id) || false === isset($ipn -> posData)) {
 			$this -> _bitpayHelper -> debugData(sprintf('[ERROR] In \Bitpay\Core\Controller\Ipn::indexAction(), Did not receive order ID in IPN: ', $ipn));
-			throw new \Exception('Invalid Bitpay payment notification message received - did not receive order ID.');
+			throw new \Exception('Invalid GloBee payment notification message received - did not receive order ID.');
 		}
 
 		$ipn -> posData = is_string($ipn -> posData) ? json_decode($ipn -> posData) : $ipn -> posData;
@@ -98,14 +98,14 @@ class Index extends \Magento\Framework\App\Action\Action {
 		}
 
 		if (false === isset($order) || true === empty($order)) {
-			$this -> _bitpayHelper -> debugData('[ERROR] In \Bitpay\Core\Controller\Ipn::indexAction(), Invalid Bitpay IPN received.');
-			$this -> throwException('Invalid Bitpay IPN received.');
+			$this -> _bitpayHelper -> debugData('[ERROR] In \Bitpay\Core\Controller\Ipn::indexAction(), Invalid GloBee IPN received.');
+			$this -> throwException('Invalid GloBee IPN received.');
 		}
 
 		$orderId = $order -> getId();
 		if (false === isset($orderId) || true === empty($orderId)) {
-			$this -> _bitpayHelper -> debugData('[ERROR] In \Bitpay\Core\Controller\Ipn::indexAction(), Invalid Bitpay IPN received.');
-			$this -> throwException('Invalid Bitpay IPN received.');
+			$this -> _bitpayHelper -> debugData('[ERROR] In \Bitpay\Core\Controller\Ipn::indexAction(), Invalid GloBee IPN received.');
+			$this -> throwException('Invalid GloBee IPN received.');
 		}
 
 		/**
@@ -168,8 +168,8 @@ class Index extends \Magento\Framework\App\Action\Action {
 				$order -> save();
 
 			} else {
-				$this -> _bitpayHelper -> debugData('[ERROR] In \Bitpay\Core\Controller\Ipn::indexAction(), Could not create a payment object in the Bitpay IPN controller.');
-				$this -> throwException('Could not create a payment object in the Bitpay IPN controller.');
+				$this -> _bitpayHelper -> debugData('[ERROR] In \Bitpay\Core\Controller\Ipn::indexAction(), Could not create a payment object in the GloBee IPN controller.');
+				$this -> throwException('Could not create a payment object in the GloBee IPN controller.');
 			}
 		}
 
@@ -177,8 +177,8 @@ class Index extends \Magento\Framework\App\Action\Action {
 		$state = \Magento\Framework\App\ObjectManager::getInstance() -> create('Magento\Framework\App\Config\ScopeConfigInterface') -> getValue(sprintf('payment/bitpay/invoice_%s', $invoice -> getStatus()));
 
 		if (false === isset($state) || true === empty($state)) {
-			$this -> _bitpayHelper -> debugData('[ERROR] In \Bitpay\Core\Controller\Ipn::indexAction(), Could not retrieve the defined state parameter to update this order to in the Bitpay IPN controller.');
-			$this -> throwException('Could not retrieve the defined state parameter to update this order in the Bitpay IPN controller.');
+			$this -> _bitpayHelper -> debugData('[ERROR] In \Bitpay\Core\Controller\Ipn::indexAction(), Could not retrieve the defined state parameter to update this order to in the GloBee IPN controller.');
+			$this -> throwException('Could not retrieve the defined state parameter to update this order in the GloBee IPN controller.');
 		}
 
 		// Check if status should be updated

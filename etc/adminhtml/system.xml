@@ -22,8 +22,8 @@
                     <field id="pairing_code" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
                         <label>Pairing Code</label>
                         <comment>
-                            <![CDATA[You must first create a pairing code for your BitPay Merchant account at <a href="https://bitpay.com/api-tokens" target="_blank">https://bitpay.com/api-tokens</a> and copy/paste 
-                            that code here. Once you have successfully paired this Magento store with your BitPay Merchant account, you can begin accepting Bitcoins as payment.]]>
+                            <![CDATA[You must first create a pairing code for your GloBee Merchant account at <a href="https://globee.com/api-tokens" target="_blank">https://globee.com/api-tokens</a> and copy/paste
+                            that code here. Once you have successfully paired this Magento store with your GloBee Merchant account, you can begin accepting Bitcoins as payment.]]>
                         </comment>
                         <backend_model>Bitpay\Core\Model\Config\Backend\PairingCode</backend_model>
                         <config_path>payment/bitpay/pairing_code</config_path>
@@ -50,7 +50,7 @@
                         <source_model>Bitpay\Core\Model\Config\Source\Network</source_model>
                         <config_path>payment/bitpay/network</config_path>
                         <comment>
-                            <![CDATA[You can sign up for a test account at <a href="https://test.bitpay.com" target="_blank">test.bitpay.com</a>.]]>
+                            <![CDATA[You can sign up for a test account at <a href="https://test.globee.com" target="_blank">test.globee.com</a>.]]>
                         </comment>
                     </field>
                     <field id="debug" translate="label" type="select" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1">
@@ -74,7 +74,7 @@
                         <source_model>Bitpay\Core\Model\Config\Source\TransactionSpeed</source_model>
                         <config_path>payment/bitpay/speed</config_path>
                         <comment>
-                            <![CDATA[Determines when a BitPay payment confirmation is sent.<br /><strong>High:</strong> an invoice is confirmed immediately when payment received.<br /><strong>Medium:</strong> an invoice is confirmed after 1 block confirmation by the Bitcoin network (~10 mins).<br /><strong>Low:</strong> an invoice is confirmed after 6 block confirmations by the Bitcoin network (~1 hour).<br />The default and safest setting is "Low".  A "High" setting is quicker to generate a payment confirmation but is riskier since the transaction could have not been officially confirmed by the Bitcoin network itself.]]>
+                            <![CDATA[Determines when a GloBee payment confirmation is sent.<br /><strong>High:</strong> an invoice is confirmed immediately when payment received.<br /><strong>Medium:</strong> an invoice is confirmed after 1 block confirmation by the Bitcoin network (~10 mins).<br /><strong>Low:</strong> an invoice is confirmed after 6 block confirmations by the Bitcoin network (~1 hour).<br />The default and safest setting is "Low".  A "High" setting is quicker to generate a payment confirmation but is riskier since the transaction could have not been officially confirmed by the Bitcoin network itself.]]>
                         </comment>
                     </field>
                 </group>
@@ -132,7 +132,7 @@
                         <source_model>Magento\Sales\Model\Config\Source\Order\Status</source_model>
                         <config_path>payment/bitpay/invoice_complete</config_path>
                         <comment>
-                            <![CDATA[A completed BitPay invoice indicates the payment for the invoice has been fully confirmed by the Bitcoin network and the funds have been deposited into your BitPay Merchant account.]]>
+                            <![CDATA[A completed GloBee invoice indicates the payment for the invoice has been fully confirmed by the Bitcoin network and the funds have been deposited into your GloBee Merchant account.]]>
                         </comment>
                     </field>
                 </group>

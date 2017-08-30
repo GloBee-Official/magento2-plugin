@@ -127,8 +127,8 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         $this->_privateKey = new \Bitpay\PrivateKey('payment/bitpay/private_key');
 
         if (false === isset($this->_privateKey) || true === empty($this->_privateKey)) {
-            $this->debugData('[ERROR] In \Bitpay\Core\Helper\Data::generateAndSaveKeys(): could not create new Bitpay private key object. Cannot continue!');
-            throw new \Exception('In \Bitpay\Core\Helper\Data::generateAndSaveKeys(): could not create new Bitpay private key object. Cannot continue!');
+            $this->debugData('[ERROR] In \Bitpay\Core\Helper\Data::generateAndSaveKeys(): could not create new GloBee private key object. Cannot continue!');
+            throw new \Exception('In \Bitpay\Core\Helper\Data::generateAndSaveKeys(): could not create new GloBee private key object. Cannot continue!');
         } else {
             $this->_privateKey->generate();
         }
@@ -136,8 +136,8 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         $this->_publicKey = new \Bitpay\PublicKey('payment/bitpay/public_key');
 
         if (false === isset($this->_publicKey) || true === empty($this->_publicKey)) {
-            $this->debugData('[ERROR] In \Bitpay\Core\Helper\Data::generateAndSaveKeys(): could not create new Bitpay public key object. Cannot continue!');
-            throw new \Exception('In \Bitpay\Core\Helper\Data::generateAndSaveKeys(): could not create new Bitpay public key object. Cannot continue!');
+            $this->debugData('[ERROR] In \Bitpay\Core\Helper\Data::generateAndSaveKeys(): could not create new GloBee public key object. Cannot continue!');
+            throw new \Exception('In \Bitpay\Core\Helper\Data::generateAndSaveKeys(): could not create new GloBee public key object. Cannot continue!');
         } else {
             $this->_publicKey
                  ->setPrivateKey($this->_privateKey)
@@ -256,8 +256,8 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         $this->_sin = new \Bitpay\SinKey();
 
         if (false === isset($this->_sin) || true === empty($this->_sin)) {
-            $this->debugData('[ERROR] In \Bitpay\Core\Helper\Data::getSinKey(): could not create new BitPay SinKey object. Cannot continue!');
-            throw new \Exception('In \Bitpay\Core\Helper\Data::getSinKey(): could not create new BitPay SinKey object. Cannot continue!');
+            $this->debugData('[ERROR] In \Bitpay\Core\Helper\Data::getSinKey(): could not create new GloBee SinKey object. Cannot continue!');
+            throw new \Exception('In \Bitpay\Core\Helper\Data::getSinKey(): could not create new GloBee SinKey object. Cannot continue!');
         }
 
         $this->_sin
@@ -349,10 +349,10 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
             $this->_keyManager = new \Bitpay\KeyManager($this->magento_st);
 
             if (false === isset($this->_keyManager) || true === empty($this->_keyManager)) {
-                $this->debugData('[ERROR] In \Bitpay\Core\Helper\Data::getKeyManager(): could not create new BitPay KeyManager object. Cannot continue!');
-                throw new \Exception('In \Bitpay\Core\Helper\Data::getKeyManager(): could not create new BitPay KeyManager object. Cannot continue!');
+                $this->debugData('[ERROR] In \Bitpay\Core\Helper\Data::getKeyManager(): could not create new GloBee KeyManager object. Cannot continue!');
+                throw new \Exception('In \Bitpay\Core\Helper\Data::getKeyManager(): could not create new GloBee KeyManager object. Cannot continue!');
             } else {
-                $this->debugData('[INFO] In \Bitpay\Core\Helper\Data::getKeyManager(): successfully created new BitPay KeyManager object.');
+                $this->debugData('[INFO] In \Bitpay\Core\Helper\Data::getKeyManager(): successfully created new GloBee KeyManager object.');
             }
         }
 
@@ -375,10 +375,10 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         $this->_client = new \Bitpay\Client\Client();
 
         if (false === isset($this->_client) || true === empty($this->_client)) {
-            $this->debugData('[ERROR] In \Bitpay\Core\Helper\Data::getBitpayClient(): could not create new BitPay Client object. Cannot continue!');
-            throw new \Exception('In \Bitpay\Core\Helper\Data::getBitpayClient(): could not create new BitPay Client object. Cannot continue!');
+            $this->debugData('[ERROR] In \Bitpay\Core\Helper\Data::getBitpayClient(): could not create new GloBee Client object. Cannot continue!');
+            throw new \Exception('In \Bitpay\Core\Helper\Data::getBitpayClient(): could not create new GloBee Client object. Cannot continue!');
         } else {
-            $this->debugData('[INFO] In \Bitpay\Core\Helper\Data::getBitpayClient(): successfully created new BitPay Client object.');
+            $this->debugData('[INFO] In \Bitpay\Core\Helper\Data::getBitpayClient(): successfully created new GloBee Client object.');
         }
 
         if($this->scopeConfig->getValue('payment/bitpay/network') === 'livenet') {
@@ -406,10 +406,10 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         $token = new \Bitpay\Token();
 
         if (false === isset($token) || true === empty($token)) {
-            $this->debugData('[ERROR] In \Bitpay\Core\Helper\Data::getToken(): could not create new BitPay Token object. Cannot continue!');
-            throw new \Exception('In \Bitpay\Core\Helper\Data::getToken(): could not create new BitPay Token object. Cannot continue!');
+            $this->debugData('[ERROR] In \Bitpay\Core\Helper\Data::getToken(): could not create new GloBee Token object. Cannot continue!');
+            throw new \Exception('In \Bitpay\Core\Helper\Data::getToken(): could not create new GloBee Token object. Cannot continue!');
         } else {
-            $this->debugData('[INFO] In \Bitpay\Core\Helper\Data::getToken(): successfully created new BitPay Token object.');
+            $this->debugData('[INFO] In \Bitpay\Core\Helper\Data::getToken(): successfully created new GloBee Token object.');
         }
 
         $token->setToken($this->scopeConfig->getValue('payment/bitpay/token'));

@@ -50,15 +50,15 @@ class PairingCode extends \Magento\Framework\App\Config\Value
             return;
         }
 
-        $this->helper->debugData('[INFO] In Bitpay\Core\Model\Config\PairingCode::save(): attempting to pair with BitPay with pairing code ' . $pairingCode);
+        $this->helper->debugData('[INFO] In Bitpay\Core\Model\Config\PairingCode::save(): attempting to pair with GloBee with pairing code ' . $pairingCode);
         try {
             $this->helper->sendPairingRequest($pairingCode);
         } catch (\Exception $e) {
             $this->helper->debugData(sprintf('[ERROR] Exception thrown while calling the sendPairingRequest() function. The specific error message is: "%s"', $e->getMessage()));
-            $this->messageManager->addError('There was an error while trying to pair with BitPay using the pairing code '.$pairingCode.'. Please try again or enable debug mode and send the "payment_bitpay.log" file to support@bitpay.com for more help.');
+            $this->messageManager->addError('There was an error while trying to pair with GloBee using the pairing code '.$pairingCode.'. Please try again or enable debug mode and send the "payment_bitpay.log" file to support@globee.com for more help.');
 
             return;
         }
-       $this->messageManager->addSuccess('Pairing with BitPay was successful.');
+       $this->messageManager->addSuccess('Pairing with GloBee was successful.');
     }
 }

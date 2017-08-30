@@ -43,7 +43,7 @@ class Index extends \Magento\Framework\App\Action\Action
     {
     
         if($this->config->getValue('payment/bitpay/fullscreen')){
-            $html = 'You will be transfered to <a href="https://bitpay.com" target="_blank\">BitPay</a> to complete your purchase when using this payment method.';
+            $html = 'You will be transfered to <a href="https://bitpay.com" target="_blank\">GloBee</a> to complete your purchase when using this payment method.';
         }else{
             
             $html = '';

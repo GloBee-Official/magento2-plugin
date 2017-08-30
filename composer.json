@@ -1,19 +1,24 @@
 {
-    "name": "bitpay/magento2-plugin",
-    "description": "Bitcoin payment module using the bitpay.com service",
+    "name": "GloBee-Official/magento2-plugin",
+    "description": "Bitcoin payment module using the globee.com service",
     "keywords": ["magento2", "magento","bitcoin"],
     "minimum-stability": "stable",
     "type": "magento2-plugin",
-    "homepage": "https://github.com/bitpay/magento2-plugin",
+    "homepage": "https://github.com/GloBee-Official/magento2-plugin",
     "license": "MIT",
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/GloBee-Official/php-bitpay-client.git"
+        }
+    ],
     "support": {
-        "email": "support@bitpay.com",
-        "issues": "https://github.com/bitpay/magento2-plugin/issues",
-        "source": "https://github.com/bitpay/magento2-plugin"
+        "email": "support@globee.com",
+        "issues": "https://github.com/GloBee-Official/magento2-plugin/issues",
+        "source": "https://github.com/GloBee-Official/magento2-plugin"
     },
     "require": {
-        "composer/installers": "~1.0",
-        "bitpay/php-client": "dev-master#9027ce67e4b28516ff1ebd1046bdd15c37a7a59f"
+        "composer/installers": "~1.0"
     },
     "require-dev": {
         "symfony/finder": "~2.3",

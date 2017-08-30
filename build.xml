@@ -5,7 +5,7 @@
  * @see https://github.com/bitpay/magento2-plugin/blob/master/LICENSE
  */
  -->
-<project name="bitpay/magento2-plugin" default="build">
+<project name="GloBee-Official/magento2-plugin" default="build">
     <!--
         Default properties
     -->
